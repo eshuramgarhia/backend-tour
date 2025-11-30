@@ -16,7 +16,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                echo "Installing npm dependencies..."
+                echo "Installing dependencies..."
                 sh 'npm install'
             }
         }
@@ -31,8 +31,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building backend..."
+                sh 'npm run build || true'   // many backend APIs don't have build step
             }
+        }
+
+        stage('Start Server') {
+            steps {
+                echo "Starting Node server..."
+                sh 'node server.js &'
             }
+        }
+    }
 
     post {
         success {
@@ -43,3 +52,4 @@ pipeline {
         }
     }
 }
+
