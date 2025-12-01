@@ -21,17 +21,10 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                echo "Running tests..."
-                sh 'npm test || true'   // allows pipeline even if no tests exist
-            }
-        }
-
         stage('Build') {
             steps {
                 echo "Building backend..."
-                sh 'npm run build || true'   // many backend APIs don't have build step
+                sh 'npm run build'   // many backend APIs don't have build step
             }
         }
 
