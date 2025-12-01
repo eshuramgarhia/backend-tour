@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node"   // Use your Jenkins NodeJS version name
+        nodejs "node"  
     }
 
     stages {
@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building backend..."
-                sh 'npm run build'   // many backend APIs don't have build step
+                sh 'npm run build'  
             }
         }
 
