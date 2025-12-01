@@ -1,48 +1,28 @@
 pipeline {
-    agent any
+agent any
+tools {
+    nodejs 'Node'  
+}
 
-    tools {
-        nodejs "node"  
-    }
+stages {
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                echo "Fetching latest code..."
-                checkout scm
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                echo "Installing dependencies..."
-                sh 'npm install'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo "Building backend..."
-                sh 'npm run build'  
-            }
-        }
-
-        stage('Start Server') {
-            steps {
-                echo "Starting Node server..."
-                sh 'node server.js &'
-            }
+    stage('Install Dependencies') {
+        steps {
+            bat 'npm install'
         }
     }
 
-    post {
-        success {
-            echo "Backend pipeline executed successfully!"
+    stage('Build Project') {
+        steps {
+            bat 'npm run build'  
         }
-        failure {
-            echo "Backend pipeline failed!"
+    }
+
+    stage('Start Server') {
+        steps {
+            bat 'npm start'
         }
     }
 }
 
+}
