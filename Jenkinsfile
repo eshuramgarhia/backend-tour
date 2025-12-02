@@ -1,26 +1,9 @@
 pipeline {
     agent any
-
-    tools {
-        nodejs 'Node'
-    }
-
     stages {
-        stage('Install Dependencies') {
+        stage('Test') {
             steps {
-                bat 'npm install'
-            }
-        }
-
-        stage('Build Project') {
-            steps {
-                bat 'npm run build'
-            }
-        }
-
-        stage('Start Server') {
-            steps {
-                bat 'npm start'
+                echo "Jenkinsfile LOAD ho gaya"
             }
         }
     }
