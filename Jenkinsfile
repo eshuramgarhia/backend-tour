@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Git repository pull karna
-                git branch: 'main', url: 'https://github.com/username/your-node-backend.git'
+                git branch: 'main', url: 'https://github.com/eshuramgarhia/backend-tour.git'
             }
         }
 
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     // Backend server start karna
-                    sh 'nohup npm start &'
+                    sh 'npm start &'
                     echo "Server started successfully!"
                 }
             }
